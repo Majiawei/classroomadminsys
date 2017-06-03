@@ -3,6 +3,9 @@ require_once 'include.php';
 $id=$_REQUEST['id'];
 $proInfo=getProById($id);
 $proImgs=getProImgsById($id);
+print_r($proInfo);
+print_r($proImgs);
+
 if(!($proImgs &&is_array($proImgs))){
 	alertMes("商品图片错误", "index.php");
 }
@@ -166,8 +169,8 @@ $(document).ready(function() {
 			<div class="des_content">
 				<h3 class="des_content_tit"><?php echo $proInfo['pName'];?></h3>
 				<div class="dl clearfix">
-					<div class="dt">慕课价</div>
-					<div class="dd clearfix"><span class="des_money"><em>￥</em><?php echo $proInfo['iPrice'];?></span></div>
+					<div class="dt">教室容量</div>
+					<div class="dd clearfix"><span class="des_money"><?php echo $proInfo['pNum'];?></span></div>
 				</div>
 				<div class="dl clearfix">
 					<div class="dt">优惠</div>

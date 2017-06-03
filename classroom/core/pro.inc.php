@@ -179,7 +179,7 @@ function checkProExist($cid){
  * @return array
  */
 function getAllPros(){
-	$sql="select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName,p.cId from imooc_pro as p join imooc_cate c on p.cId=c.id ";
+	$sql="select p.id,p.pName,p.pSn,p.pNum,p.pDesc,p.pubTime,p.isShow,c.cName,p.cId from room_tab as p join room_cate c on p.cId=c.id ";
 	$rows=fetchAll($sql);
 	return $rows;
 }
@@ -190,7 +190,7 @@ function getAllPros(){
  * @return Array
  */
 function getProsByCid($cid){
-	$sql="select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName,p.cId from imooc_pro as p join imooc_cate c on p.cId=c.id where p.cId={$cid} limit 4";
+	$sql="select p.id,p.pName,p.pSn,p.pNum,p.pDesc,p.pubTime,p.isShow,c.cName,p.cId from room_tab as p join room_cate c on p.cId=c.id where p.cId={$cid} limit 4";
 	$rows=fetchAll($sql);
 	return $rows;
 }
@@ -201,7 +201,7 @@ function getProsByCid($cid){
  * @return array
  */
 function getSmallProsByCid($cid){
-	$sql="select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName,p.cId from imooc_pro as p join imooc_cate c on p.cId=c.id where p.cId={$cid} limit 4,4";
+	$sql="select p.id,p.pName,p.pSn,p.pNum,p.pDesc,p.pubTime,p.isShow,c.cName,p.cId from room_tab as p join room_cate c on p.cId=c.id where p.cId={$cid} limit 4,4";
 	$rows=fetchAll($sql);
 	return $rows;
 }

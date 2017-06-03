@@ -166,8 +166,8 @@
 				<div class="shop_img">
 					<a href="proDetails.php?id=<?php echo $pro['id'];?>" target="_blank"><img height="200" width="187" src="image_220/<?php echo $proImg['albumPath'];?>" alt=""></a>
 				</div>
-				<h6><?php echo $pro['pName'];?></h6>
-				<p><?php echo $pro['iPrice'];?>元</p>
+				<h3><?php echo $pro['pName'];?></h3>
+				<p>教室容量：<?php echo $pro['pNum'];?></p>
 			</div>
 			<?php 
 			endforeach;
@@ -178,6 +178,7 @@
 		<div class="shopList_sm clearfix">
 		<?php 
 			$prosSmall=getSmallProsByCid($cate['id']);
+			//print_r($prosSmall);
 			if($prosSmall &&is_array($prosSmall)):
 			foreach($prosSmall as $proSmall):
 			$proSmallImg=getProImgById($proSmall['id']);
@@ -187,8 +188,8 @@
 					<a href="proDetails.php?id=<?php echo $proSmall['id'];?>" target="_blank"><img width="95" height="95" src="image_220/<?php echo $proSmallImg['albumPath'];?>" alt=""></a>
 				</div>
 				<div class="shopItem_text">
-					<p><?php echo $proSmall['pName'];?></p>
-					<h3>￥<?php echo $proSmall['iPrice'];?>	</h3>
+					<h3><?php echo $proSmall['pName'];?></h3>
+					<p>教室容量：<?php echo $proSmall['pNum'];?>	</p>
 				</div>
 			</div>
 			<?php 

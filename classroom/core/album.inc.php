@@ -10,7 +10,7 @@ function addAlbum($arr){
  * @return array
  */
 function getProImgById($id){
-	$sql="select albumPath from imooc_album where pid={$id} limit 1";
+	$sql="select albumPath from room_album where pid={$id} limit 1";
 	$row=fetchOne($sql);
 	return $row;
 }
@@ -21,7 +21,7 @@ function getProImgById($id){
  * @return array
  */
 function getProImgsById($id){
-	$sql="select albumPath from imooc_album where pid={$id} ";
+	$sql="select albumPath from room_album where pid={$id} ";
 	$rows=fetchAll($sql);
 	return $rows;
 }

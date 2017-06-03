@@ -1,5 +1,5 @@
 <?php 
-require_once '../configs/configs.php';
+//require_once '../configs/configs.php';
 /**
  * 连接数据库
  * @return resource
