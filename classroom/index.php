@@ -1,8 +1,12 @@
 <?php 
  require_once 'include.php';
+ if (empty($_SESSION['loginFlag'])) {
+     $_SESSION['loginFlag']=0;
+ }
+
  $cates=getAllcate();
  if(!($cates && is_array($cates))){
- 	alertMes("不好意思，网站维护中!!!", "http://www.imooc.com");
+ 	alertMes("不好意思，网站维护中!!!", "http://www.baidu.com");
  }
 
  ?>
@@ -23,15 +27,15 @@
 	<div class="topBar">
 		<div class="comWidth">
 			<div class="leftArea">
-				<a href="#" class="collection">收藏慕课</a>
+				<a href="#" class="collection">设为标签</a>
 			</div>
 			<div class="rightArea">
-				欢迎来到慕课网！
+				欢迎来到ustb教室预约系统！
 				<?php if($_SESSION['loginFlag']):?>
 				<span>欢迎您</span><?php echo $_SESSION['username'];?>
 				<a href="doAction.php?act=userOut">[退出]</a>
 				<?php else:?>
-				<a href="login.php">[登录]</a><a href="reg.php">[免费注册]</a>
+				<a href="login.php">[登录]</a><a href="reg.php">[注册]</a>
 				<?php endif;?>
 			</div>
 		</div>
@@ -39,104 +43,105 @@
 	<div class="logoBar">
 		<div class="comWidth">
 			<div class="logo fl">
-				<a href="#"><img src="images/logo.jpg" alt="慕课网"></a>
+<!-- 				<a href="#"><img src="images/logo.jpg" alt="慕课网"></a> -->
+				<a href="#"><img src="images/logo1.jpg" alt="ustb" height="70" width="112"></a>
 			</div>
 			<div class="search_box fl">
 				<input type="text" class="search_text fl">
-				<input type="button" value="搜 索" class="search_btn fr">
+				<input type="button" value="教室搜索" class="search_btn fr">
 			</div>
-			<div class="shopCar fr">
-				<span class="shopText fl">购物车</span>
-				<span class="shopNum fl">0</span>
-			</div>
+<!-- 			<div class="shopCar fr"> -->
+<!-- 				<span class="shopText fl">购物车</span> -->
+<!-- 				<span class="shopNum fl">0</span> -->
+<!-- 			</div> -->
 		</div>
 	</div>
-	<div class="navBox">
-		<div class="comWidth clearfix">
-			<div class="shopClass fl">
-				<h3>全部商品分类<i class="shopClass_icon"></i></h3>
-				<div class="shopClass_show">
-					<dl class="shopClass_item">
-						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt>
-						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd>
-					</dl>
-					<dl class="shopClass_item">
-						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt>
-						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd>
-					</dl>
-					<dl class="shopClass_item">
-						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt>
-						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd>
-					</dl>
-					<dl class="shopClass_item">
-						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt>
-						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd>
-					</dl>
-					<dl class="shopClass_item">
-						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt>
-						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd>
-					</dl>
-				</div>
-				<div class="shopClass_list hide">
-					<div class="shopClass_cont">
-						<dl class="shopList_item">
-							<dt>电脑装机</dt>
-							<dd>
-								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a>
-							</dd>
-						</dl>
-						<dl class="shopList_item">
-							<dt>电脑装机</dt>
-							<dd>
-								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a>
-							</dd>
-						</dl>
-						<dl class="shopList_item">
-							<dt>电脑装机</dt>
-							<dd>
-								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a>
-							</dd>
-						</dl>
-						<dl class="shopList_item">
-							<dt>电脑装机</dt>
-							<dd>
-								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a>
-							</dd>
-						</dl>
-						<dl class="shopList_item">
-							<dt>电脑装机</dt>
-							<dd>
-								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a>
-							</dd>
-						</dl>
-						<div class="shopList_links">
-							<a href="#">文字测试内容等等<span></span></a><a href="#">文字容等等<span></span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<ul class="nav fl">
-				<li><a href="#" class="active">数码城</a></li>
-				<li><a href="#">天黑黑</a></li>
-				<li><a href="#">团购</a></li>
-				<li><a href="#">发现</a></li>
-				<li><a href="#">二手特卖</a></li>
-				<li><a href="#">名品会</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
-<div class="banner comWidth clearfix">
-	<div class="banner_bar banner_big">
-		<ul class="imgBox">
-			<li><a href="#"><img src="images/banner/banner_01.jpg" alt="banner"></a></li>
-			<li><a href="#"><img src="images/banner/banner_02.jpg" alt="banner"></a></li>
-		</ul>
-		<div class="imgNum">
-			<a href="#" class="active"></a><a href="#"></a><a href="#"></a><a href="#"></a>
-		</div>
-	</div>
-</div>
+<!-- 	<div class="navBox"> -->
+<!-- 		<div class="comWidth clearfix"> -->
+<!-- 			<div class="shopClass fl"> -->
+<!-- 				<h3>全部商品分类<i class="shopClass_icon"></i></h3> -->
+<!-- 				<div class="shopClass_show"> -->
+<!-- 					<dl class="shopClass_item"> -->
+<!-- 						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt> -->
+<!-- 						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd> -->
+<!-- 					</dl> -->
+<!-- 					<dl class="shopClass_item"> -->
+<!-- 						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt> -->
+<!-- 						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd> -->
+<!-- 					</dl> -->
+<!-- 					<dl class="shopClass_item"> -->
+<!-- 						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt> -->
+<!-- 						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd> -->
+<!-- 					</dl> -->
+<!-- 					<dl class="shopClass_item"> -->
+<!-- 						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt> -->
+<!-- 						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd> -->
+<!-- 					</dl> -->
+<!-- 					<dl class="shopClass_item"> -->
+<!-- 						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt> -->
+<!-- 						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd> -->
+<!-- 					</dl> -->
+<!-- 				</div> -->
+<!-- 				<div class="shopClass_list hide"> -->
+<!-- 					<div class="shopClass_cont"> -->
+<!-- 						<dl class="shopList_item"> -->
+<!-- 							<dt>电脑装机</dt> -->
+<!-- 							<dd> -->
+<!-- 								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a> -->
+<!-- 							</dd> -->
+<!-- 						</dl> -->
+<!-- 						<dl class="shopList_item"> -->
+<!-- 							<dt>电脑装机</dt> -->
+<!-- 							<dd> -->
+<!-- 								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a> -->
+<!-- 							</dd> -->
+<!-- 						</dl> -->
+<!-- 						<dl class="shopList_item"> -->
+<!-- 							<dt>电脑装机</dt> -->
+<!-- 							<dd> -->
+<!-- 								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a> -->
+<!-- 							</dd> -->
+<!-- 						</dl> -->
+<!-- 						<dl class="shopList_item"> -->
+<!-- 							<dt>电脑装机</dt> -->
+<!-- 							<dd> -->
+<!-- 								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a> -->
+<!-- 							</dd> -->
+<!-- 						</dl> -->
+<!-- 						<dl class="shopList_item"> -->
+<!-- 							<dt>电脑装机</dt> -->
+<!-- 							<dd> -->
+<!-- 								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a> -->
+<!-- 							</dd> -->
+<!-- 						</dl> -->
+<!-- 						<div class="shopList_links"> -->
+<!-- 							<a href="#">文字测试内容等等<span></span></a><a href="#">文字容等等<span></span></a> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<ul class="nav fl"> -->
+<!-- 				<li><a href="#" class="active">数码城</a></li> -->
+<!-- 				<li><a href="#">天黑黑</a></li> -->
+<!-- 				<li><a href="#">团购</a></li> -->
+<!-- 				<li><a href="#">发现</a></li> -->
+<!-- 				<li><a href="#">二手特卖</a></li> -->
+<!-- 				<li><a href="#">名品会</a></li> -->
+<!-- 			</ul> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </div> -->
+<!-- <div class="banner comWidth clearfix"> -->
+<!-- 	<div class="banner_bar banner_big"> -->
+<!-- 		<ul class="imgBox"> -->
+<!-- 			<li><a href="#"><img src="images/banner/banner_01.jpg" alt="banner"></a></li> -->
+<!-- 			<li><a href="#"><img src="images/banner/banner_02.jpg" alt="banner"></a></li> -->
+<!-- 		</ul> -->
+<!-- 		<div class="imgNum"> -->
+<!-- 			<a href="#" class="active"></a><a href="#"></a><a href="#"></a><a href="#"></a> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </div> -->
 <?php foreach($cates as $cate):?>
 <div class="shopTit comWidth">
 	<span class="icon"></span><h3><?php echo $cate['cName'];?></h3>
@@ -144,15 +149,23 @@
 </div>
 <div class="shopList comWidth clearfix">
 	<div class="leftArea">
-		<div class="banner_bar banner_sm">
-			<ul class="imgBox">
-				<li><a href="#"><img src="images/banner/banner_sm_01.jpg" alt="banner"></a></li>
-				<li><a href="#"><img src="images/banner/banner_sm_02.jpg" alt="banner"></a></li>
-			</ul>
-			<div class="imgNum">
-				<a href="#" class="active"></a><a href="#"></a><a href="#"></a><a href="#"></a>
-			</div>
-		</div>
+	<h2>重要通知</h2>
+    <p>各年级、各班级：</p>
+    <ul>
+    <li>一、教室卫生打扫要达到基本要求（具体参考学校卫生标准），给学生营造一个舒 适整洁的学习环境。</li>
+    <li>二、教室桌椅的摆放要求：教室是学生学习的主要场所，所以教室的一切布置都是 为了学生能更好的学习为目的，因此，教室桌椅的布置也应当以学生能更好的学习为出发点进行摆放，在保证安全的条件下，各班课自行进行桌椅摆放的设计。</li>
+    </ul>
+    <h3>教务处</h3>
+    <h3>2017年6月1日</h3>
+<!-- 		<div class="banner_bar banner_sm"> -->
+<!-- 			<ul class="imgBox"> -->
+<!-- 				<li><a href="#"><img src="images/banner/banner_sm_01.jpg" alt="banner"></a></li> -->
+<!-- 				<li><a href="#"><img src="images/banner/banner_sm_02.jpg" alt="banner"></a></li> -->
+<!-- 			</ul> -->
+<!-- 			<div class="imgNum"> -->
+<!-- 				<a href="#" class="active"></a><a href="#"></a><a href="#"></a><a href="#"></a> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 	</div>
 	<div class="rightArea">
 		<div class="shopList_top clearfix">
@@ -202,8 +215,8 @@
 <?php endforeach;?>
 <div class="hr_25"></div>
 <div class="footer">
-	<p><a href="#">慕课简介</a><i>|</i><a href="#">慕课公告</a><i>|</i> <a href="#">招纳贤士</a><i>|</i><a href="#">联系我们</a><i>|</i>客服热线：400-675-1234</p>
-	<p>Copyright &copy; 2006 - 2014 慕课版权所有&nbsp;&nbsp;&nbsp;京ICP备09037834号&nbsp;&nbsp;&nbsp;京ICP证B1034-8373号&nbsp;&nbsp;&nbsp;某市公安局XX分局备案编号：123456789123</p>
+	<p><a href="#">平台简介</a><i>|</i><a href="#">平台公告</a><i>|</i> <a href="#">招纳贤士</a><i>|</i><a href="#">联系我们</a><i>|</i>客服热线：17801052318</p>
+	<p>Copyright &copy; 2016 - 2017 ustb版权所有&nbsp;&nbsp;&nbsp;京ICP备09037834号&nbsp;&nbsp;&nbsp;京ICP证B1034-8373号&nbsp;&nbsp;&nbsp;某市公安局XX分局备案编号：123456789123</p>
 	<p class="web"><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a></p>
 </div>
 </body>

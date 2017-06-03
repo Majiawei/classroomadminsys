@@ -10,7 +10,7 @@ $row=getCateById($id);
 <title>Insert title here</title>
 </head>
 <body>
-<h3>修改分类</h3>
+<h3>修改公告</h3>
 <form action="doAdminAction.php?act=editCate&id=<?php echo $id;?>" method="post">
 <table width="70%" border="1" cellpadding="5" cellspacing="0" bgcolor="#cccccc">
 	<tr>

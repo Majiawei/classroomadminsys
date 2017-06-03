@@ -16,7 +16,6 @@ checkLogined();
             <h3 class="head_text fr">教室预约后台管理系统</h3>
     </div>
     <div class="operation_user clearfix">
-       <!--   <div class="link fl"><a href="#">慕课</a><span>&gt;&gt;</span><a href="#">商品管理</a><span>&gt;&gt;</span>商品修改</div>-->
         <div class="link fr">
             <b>欢迎您
             <?php 
@@ -53,19 +52,17 @@ checkLogined();
                         </dl>
                     </li>
                     <li>
-                        <h3><span onclick="show('menu2','change2')" id="change2">+</span>分类管理</h3>
+                        <h3><span onclick="show('menu2','change2')" id="change2">+</span>教室分类管理</h3>
                         <dl id="menu2" style="display:none;">
                         	<dd><a href="addCate.php" target="mainFrame">添加分类</a></dd>
                             <dd><a href="listCate.php" target="mainFrame">分类列表</a></dd>
                         </dl>
                     </li>
                     <li>
-                        <h3><span  onclick="show('menu3','change3')" id="change3" >+</span>订单管理</h3>
+                        <h3><span  onclick="show('menu3','change3')" id="change3" >+</span>预约管理</h3>
                         <dl id="menu3" style="display:none;">
-                            <dd><a href="#">订单修改</a></dd>
-                            <dd><a href="#">订单又修改</a></dd>
-                            <dd><a href="#">订单总是修改</a></dd>
-                            <dd><a href="#">测试内容你看着改</a></dd>
+<!--                             <dd><a href="addOrder.php" target="mainFrame">预约教室</a></dd> -->
+                            <dd><a href="listOrder.php" target="mainFrame">预约列表</a></dd>
                         </dl>
                     </li>
                     <li>
@@ -82,11 +79,11 @@ checkLogined();
                             <dd><a href="listAdmin.php" target="mainFrame">管理员列表</a></dd>
                         </dl>
                     </li>
-                    
-                         <li>
-                        <h3><span onclick="show('menu6','change6')" id="change6">+</span>教室图片管理</h3>
+                    <li>
+                        <h3><span onclick="show('menu6','change6')" id="change6">+</span>公告管理</h3>
                         <dl id="menu6" style="display:none;">
-                            <dd><a href="listProImages.php" target="mainFrame">教室图片列表</a></dd>
+                        	<dd><a href="addNotice.php" target="mainFrame">添加公告</a></dd>
+                            <dd><a href="listNotice.php" target="mainFrame">公告列表</a></dd>
                         </dl>
                     </li>
                 </ul>

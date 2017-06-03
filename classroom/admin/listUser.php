@@ -1,7 +1,8 @@
 <?php 
 require_once '../include.php';
 checkLogined();
-$sql="select id,username,email,activeFlag from imooc_user";
+$sql="select id,username,email,type from user";
+//$row=array('type'=>0);
 $rows=fetchAll($sql);
 if(!$rows){
 	alertMes("sorry,没有用户,请添加!","addUser.php");
@@ -20,7 +21,7 @@ if(!$rows){
 <div class="details">
                     <div class="details_operation clearfix">
                         <div class="bui_select">
-                            <input type="button" value="添&nbsp;&nbsp;加" class="add"  onclick="addAdmin()">
+                            <input type="button" value="添&nbsp;&nbsp;加" class="add"  onclick="addUser()">
                         </div>
                             
                     </div>
@@ -31,7 +32,7 @@ if(!$rows){
                                 <th width="15%">编号</th>
                                 <th width="20%">用户名称</th>
                                 <th width="20%">用户邮箱</th>
-                                <th width="20%">是否激活</th>
+                                <th width="20%">用户类型</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
@@ -44,7 +45,14 @@ if(!$rows){
                                 <td><?php echo $row['email'];?></td>
                                  <td>
                                  		<?php 
-                                 		echo $row['activeFlag']==0?"未激活":"激活";
+                                 		if ($row['type']==1) {
+                                 		    echo "学生";
+                                 		}elseif ($row['type']==2){
+                                 		    echo "教师";
+                                 		}else {
+                                 		    echo "游客";
+                                 		}
+                                 		//echo $row['type']==0?"未激活":"激活";
                                  		?>
                                  </td>
                                 <td align="center"><input type="button" value="修改" class="btn" onclick="editUser(<?php echo $row['id'];?>)"><input type="button" value="删除" class="btn"  onclick="delUser(<?php echo $row['id'];?>)"></td>

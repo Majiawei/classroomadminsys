@@ -4,7 +4,7 @@ require_once '../include.php';
 // $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
 // $rows=getAdminByPage($page,$pageSize);
 $sql="select * from admin";
-$pageSize=2;
+$pageSize=4;
 $totalRows=getResultNum($sql);
 $totalPage=ceil($totalRows/$pageSize);
 $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;

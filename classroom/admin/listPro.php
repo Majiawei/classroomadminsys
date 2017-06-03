@@ -11,7 +11,7 @@ $where=$keywords?"where p.pName like '%{$keywords}%'":null;
 $sql="select p.id,p.pName,p.pSn,p.pNum,p.pDesc,p.pubTime,p.isShow,c.cName from room_tab as p join room_cate c on p.cId=c.id {$where}{$orderBy}";
 $totalRows=getResultNum($sql);
 // print_r($totalRows);
-$pageSize=2;
+$pageSize=4;
 $totalPage=ceil($totalRows/$pageSize);
 $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
 if($page<1||$page==null||!is_numeric($page))$page=1;

@@ -10,7 +10,7 @@
 <table width="70%" border="1" cellpadding="5" cellspacing="0" bgcolor="#cccccc">
 	<tr>
 		<td align="right">用户名</td>
-		<td><input type="text" name="username" placeholder="请输入管理员名称"/></td>
+		<td><input type="text" name="username" placeholder="请输入用户名称"/></td>
 	</tr>
 	<tr>
 		<td align="right">密码</td>
@@ -18,13 +18,13 @@
 	</tr>
 	<tr>
 		<td align="right">邮箱</td>
-		<td><input type="text" name="email" placeholder="请输入管理员邮箱"/></td>
+		<td><input type="text" name="email" placeholder="请输入用户邮箱"/></td>
 	</tr>
 	<tr>
-		<td align="right">性别</td>
-		<td><input type="radio" name="sex" value="1" checked="checked"/>男
-		<input type="radio" name="sex" value="2" />女
-		<input type="radio" name="sex" value="3" />保密
+		<td align="right">用户类型</td>
+		<td><input type="radio" name="type" value="1" checked="checked"/>学生
+		<input type="radio" name="type" value="2" />教师
+		<input type="radio" name="type" value="3" />游客
 		</td>
 	</tr>
 	<tr>

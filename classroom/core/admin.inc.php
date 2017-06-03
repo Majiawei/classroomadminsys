@@ -135,12 +135,14 @@ function addUser(){
 	$arr['password']=md5($_POST['password']);
 	$arr['regTime']=time();
 	$uploadFile=uploadFile("../uploads");
+	//print_r($arr);
+	//print_r($uploadFile);
 	if($uploadFile&&is_array($uploadFile)){
 		$arr['face']=$uploadFile[0]['name'];
 	}else{
 		return "添加失败<a href='addUser.php'>重新添加</a>";
 	}
-	if(insert("imooc_user", $arr)){
+	if(insert("user", $arr)){
 		$mes="添加成功!<br/><a href='addUser.php'>继续添加</a>|<a href='listUser.php'>查看列表</a>";
 	}else{
 		$filename="../uploads/".$uploadFile[0]['name'];
@@ -157,13 +159,13 @@ function addUser(){
  * @return string
  */
 function delUser($id){
-	$sql="select face from imooc_user where id=".$id;
+	$sql="select face from user where id=".$id;
 	$row=fetchOne($sql);
 	$face=$row['face'];
 	if(file_exists("../uploads/".$face)){
 		unlink("../uploads/".$face);
 	}
-	if(delete("imooc_user","id={$id}")){
+	if(delete("user","id={$id}")){
 		$mes="删除成功!<br/><a href='listUser.php'>查看用户列表</a>";
 	}else{
 		$mes="删除失败!<br/><a href='listUser.php'>请重新删除</a>";
@@ -178,10 +180,64 @@ function delUser($id){
 function editUser($id){
 	$arr=$_POST;
 	$arr['password']=md5($_POST['password']);
-	if(update("imooc_user", $arr,"id={$id}")){
+	if(update("user", $arr,"id={$id}")){
 		$mes="编辑成功!<br/><a href='listUser.php'>查看用户列表</a>";
 	}else{
 		$mes="编辑失败!<br/><a href='listUser.php'>请重新修改</a>";
 	}
 	return $mes;
+}
+
+
+function perorder($id){
+    $sql="update order_tab  set permit =1 where id ={$id}";
+    if(!getResultNum($sql)){
+        $mes="处理成功!<br/><a href='listOrder.php'>查看预约列表</a>";
+    }else{
+        $mes="处理失败!<br/><a href='listOrder.php'>请重新处理</a>";
+    }
+    return $mes;
+}
+function noperorder($id){
+    $sql="update order_tab  set permit =2 where id ={$id}";
+    if(!getResultNum($sql)){
+        $mes="处理成功!<br/><a href='listOrder.php'>查看预约列表</a>";
+    }else{
+        $mes="处理失败!<br/><a href='listOrder.php'>请重新处理</a>";
+    }
+    return $mes;
+}
+
+function addNotice(){
+    $arr=$_POST;
+    $arr['pubtime']=time();
+    if(insert("notice_tab",$arr)){
+        $mes="公告发布成功!<br/><a href='addNotice.php'>继续发布</a>|<a href='listNotice.php'>查看公告列表</a>";
+    }else{
+        $mes="公告发布失败！<br/><a href='addNotice.php'>重新发布</a>|<a href='listNotice.php'>查看公告列表</a>";
+    }
+    return $mes;
+}
+function getNoticeById($id){
+    $sql="select id,title,content from notice_tab where id={$id}";
+    return fetchOne($sql);
+}
+
+function editNotice($id){
+    $arr=$_POST;
+    $arr['pubtime']=time();
+    if(update("notice_tab", $arr,"id={$id}")){
+        $mes="更改成功!<br/><a href='listNotice.php'>查看公告列表</a>";
+    }else{
+        $mes="更新失败!<br/><a href='listNotice.php'>请重新更新</a>";
+    }
+    return $mes;
+}
+function delNotice($id){
+    if(delete("notice_tab","id={$id}")){
+        $mes="删除成功!<br/><a href='listNotice.php'>查看公告列表</a>";
+    }else{
+        $mes="删除失败!<br/><a href='listNotice.php'>请重新删除</a>";
+    }
+    return $mes;
 }

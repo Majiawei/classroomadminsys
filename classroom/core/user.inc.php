@@ -3,7 +3,7 @@ function reg(){
 	$arr=$_POST;
 	$arr['password']=md5($_POST['password']);
 	$arr['regTime']=time();
-	$uploadFile=uploadFile();
+	$uploadFile=uploadFile("../uploads");
 	
 	//print_r($uploadFile);
 	if($uploadFile&&is_array($uploadFile)){
@@ -11,8 +11,8 @@ function reg(){
 	}else{
 		return "注册失败";
 	}
-//	print_r($arr);exit;
-	if(insert("imooc_user", $arr)){
+	print_r($arr);
+	if(insert("user", $arr)){
 		$mes="注册成功!<br/>3秒钟后跳转到登陆页面!<meta http-equiv='refresh' content='3;url=login.php'/>";
 	}else{
 		$filename="uploads/".$uploadFile[0]['name'];
@@ -27,9 +27,9 @@ function login(){
 	$username=$_POST['username'];
 	//addslashes():使用反斜线引用特殊字符
 	//$username=addslashes($username);
-	$username=mysql_escape_string($username);
+	//$username=mysqli_escape_string($username);
 	$password=md5($_POST['password']);
-	$sql="select * from imooc_user where username='{$username}' and password='{$password}'";
+	$sql="select * from user where username='{$username}' and password='{$password}'";
 	//$resNum=getResultNum($sql);
 	$row=fetchOne($sql);
 	//echo $resNum;

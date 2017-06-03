@@ -1,7 +1,7 @@
 <?php 
 require_once '../include.php';
 $id=$_REQUEST['id'];
-$sql="select id,username,password,email,sex from imooc_user where id='{$id}'";
+$sql="select id,username,password,email,type from user where id='{$id}'";
 $row=fetchOne($sql);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -28,10 +28,10 @@ $row=fetchOne($sql);
 		
 	</tr>
 	<tr>
-		<td align="right">性别</td>
-		<td><input type="radio" name="sex" value="1"  <?php echo $row['sex']=="男"?"checked='checked'":null;?>/>男
-		<input type="radio" name="sex" value="2" <?php echo $row['sex']=="女"?"checked='checked'":null;?>/>女
-		<input type="radio" name="sex" value="3" <?php echo $row['sex']=="保密"?"checked='checked'":null;?>/>保密
+		<td align="right">用户类型</td>
+		<td><input type="radio" name="type" value="1"  <?php echo $row['type']=="学生"?"checked='checked'":null;?>/>学生
+		<input type="radio" name="type" value="2" <?php echo $row['type']=="老师"?"checked='checked'":null;?>/>老师
+		<input type="radio" name="type" value="3" <?php echo $row['type']=="游客"?"checked='checked'":null;?>/>游客
 		</td>
 	</tr>
 	<tr>

@@ -27,7 +27,7 @@
 	<div class="login_cont">
 	<form method="post" action="doAction.php?act=login" >
 		<ul class="login">
-			<li class="l_tit">邮箱/用户名/手机号</li>
+			<li class="l_tit">学工号/用户名</li>
 			<li class="mb_10"><input type="text"  name="username" placeholder="请输入用户名" class="login_input user_icon"></li>
 			<li class="l_tit">密码</li>
 			<li class="mb_10"><input type="password" name="password" class="login_input user_icon"></li>
