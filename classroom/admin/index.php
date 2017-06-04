@@ -61,7 +61,8 @@ checkLogined();
                     <li>
                         <h3><span  onclick="show('menu3','change3')" id="change3" >+</span>预约管理</h3>
                         <dl id="menu3" style="display:none;">
-<!--                             <dd><a href="addOrder.php" target="mainFrame">预约教室</a></dd> -->
+                        	<dd><a href="addperorder.php" target="mainFrame">添加可预约</a></dd>
+                            <dd><a href="listperorder.php" target="mainFrame">可预约列表</a></dd>
                             <dd><a href="listOrder.php" target="mainFrame">预约列表</a></dd>
                         </dl>
                     </li>

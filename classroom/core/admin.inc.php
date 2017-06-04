@@ -241,3 +241,20 @@ function delNotice($id){
     }
     return $mes;
 }
+function addperorder(){
+    $arr=$_POST;
+    if(insert("perorder",$arr)){
+        $mes="添加成功!<br/><a href='addperorder.php'>继续发布</a>|<a href='listperorder.php'>查看公告列表</a>";
+    }else{
+        $mes="添加失败！<br/><a href='addperorder.php'>重新发布</a>|<a href='listperorder.php'>查看公告列表</a>";
+    }
+    return $mes;
+}
+function delperorder($id){
+    if(delete("perorder","id={$id}")){
+        $mes="删除成功!<br/><a href='listperorder.php'>查看公告列表</a>";
+    }else{
+        $mes="删除失败!<br/><a href='listperorder.php'>请重新删除</a>";
+    }
+    return $mes;
+}

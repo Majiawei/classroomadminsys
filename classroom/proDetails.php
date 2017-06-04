@@ -3,7 +3,9 @@ require_once 'include.php';
 $id=$_REQUEST['id'];
 $proInfo=getProById($id);
 $proImgs=getProImgsById($id);
+$dateInfo=getDateById($id);
 // print_r($proInfo);
+// print_r($dateInfo);
 // print_r($proImgs);
 
 if(!($proImgs &&is_array($proImgs))){
@@ -20,6 +22,35 @@ if(!($proImgs &&is_array($proImgs))){
 <link type="text/css" rel="stylesheet" media="all" href="styles/jquery.jqzoom.css"/>
 <script src="scripts/jquery-1.6.js" type="text/javascript"></script>
 <script src="scripts/jquery.jqzoom-core.js" type="text/javascript"></script>
+
+<link href="./styles/global.css"  rel="stylesheet"  type="text/css" media="all" />
+<script type="text/javascript" charset="utf-8" src="../plugins/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" charset="utf-8" src="../plugins/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="./scripts/jquery-1.6.4.js"></script>
+<script>
+        KindEditor.ready(function(K) {
+                window.editor = K.create('#editor_id');
+        });
+        $(document).ready(function(){
+        	$("#selectFileBtn").click(function(){
+        		$fileField = $('<input type="file" name="thumbs[]"/>');
+        		$fileField.hide();
+        		$("#attachList").append($fileField);
+        		$fileField.trigger("click");
+        		$fileField.change(function(){
+        		$path = $(this).val();
+        		$filename = $path.substring($path.lastIndexOf("\\")+1);
+        		$attachItem = $('<div class="attachItem"><div class="left">a.gif</div><div class="right"><a href="#" title="删除附件">删除</a></div></div>');
+        		$attachItem.find(".left").html($filename);
+        		$("#attachList").append($attachItem);		
+        		});
+        	});
+        	$("#attachList>.attachItem").find('a').live('click',function(obj,i){
+        		$(this).parents('.attachItem').prev('input').remove();
+        		$(this).parents('.attachItem').remove();
+        	});
+        });
+</script>
 <!--[if IE 6]>
 <script type="text/javascript" src="js/DD_belatedPNG_0.0.8a-min.js"></script>
 <script type="text/javascript" src="js/ie6Fixpng.js"></script>
@@ -68,87 +99,8 @@ $(document).ready(function() {
 				<input type="text" class="search_text fl">
 				<input type="button" value="教室搜索" class="search_btn fr">
 			</div>
-<!-- 			<div class="shopCar fr"> -->
-<!-- 				<span class="shopText fl">购物车</span> -->
-<!-- 				<span class="shopNum fl">0</span> -->
-<!-- 			</div> -->
 		</div>
 	</div>
-<!-- 	<div class="navBox"> -->
-<!-- 		<div class="comWidth clearfix"> -->
-<!-- 			<div class="shopClass fl"> -->
-<!-- 				<h3>全部商品分类<i class="shopClass_icon"></i></h3> -->
-<!-- 				<div class="shopClass_show hide"> -->
-<!-- 					<dl class="shopClass_item"> -->
-<!-- 						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt> -->
-<!-- 						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd> -->
-<!-- 					</dl> -->
-<!-- 					<dl class="shopClass_item"> -->
-<!-- 						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt> -->
-<!-- 						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd> -->
-<!-- 					</dl> -->
-<!-- 					<dl class="shopClass_item"> -->
-<!-- 						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt> -->
-<!-- 						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd> -->
-<!-- 					</dl> -->
-<!-- 					<dl class="shopClass_item"> -->
-<!-- 						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt> -->
-<!-- 						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd> -->
-<!-- 					</dl> -->
-<!-- 					<dl class="shopClass_item"> -->
-<!-- 						<dt><a href="#" class="b">手机</a> <a href="#" class="b">数码</a> <a href="#" class="aLink">合约机</a></dt> -->
-<!-- 						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd> -->
-<!-- 					</dl> -->
-<!-- 				</div> -->
-<!-- 				<div class="shopClass_list hide"> -->
-<!-- 					<div class="shopClass_cont"> -->
-<!-- 						<dl class="shopList_item"> -->
-<!-- 							<dt>电脑装机</dt> -->
-<!-- 							<dd> -->
-<!-- 								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a> -->
-<!-- 							</dd> -->
-<!-- 						</dl> -->
-<!-- 						<dl class="shopList_item"> -->
-<!-- 							<dt>电脑装机</dt> -->
-<!-- 							<dd> -->
-<!-- 								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a> -->
-<!-- 							</dd> -->
-<!-- 						</dl> -->
-<!-- 						<dl class="shopList_item"> -->
-<!-- 							<dt>电脑装机</dt> -->
-<!-- 							<dd> -->
-<!-- 								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a> -->
-<!-- 							</dd> -->
-<!-- 						</dl> -->
-<!-- 						<dl class="shopList_item"> -->
-<!-- 							<dt>电脑装机</dt> -->
-<!-- 							<dd> -->
-<!-- 								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a> -->
-<!-- 							</dd> -->
-<!-- 						</dl> -->
-<!-- 						<dl class="shopList_item"> -->
-<!-- 							<dt>电脑装机</dt> -->
-<!-- 							<dd> -->
-<!-- 								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a> -->
-<!-- 							</dd> -->
-<!-- 						</dl> -->
-<!-- 						<div class="shopList_links"> -->
-<!-- 							<a href="#">文字测试内容等等<span></span></a><a href="#">文字容等等<span></span></a> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<ul class="nav fl"> -->
-<!-- 				<li><a href="#" class="active">数码城</a></li> -->
-<!-- 				<li><a href="#">天黑黑</a></li> -->
-<!-- 				<li><a href="#">团购</a></li> -->
-<!-- 				<li><a href="#">发现</a></li> -->
-<!-- 				<li><a href="#">二手特卖</a></li> -->
-<!-- 				<li><a href="#">名品会</a></li> -->
-<!-- 			</ul> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- </div> -->
 <div class="userPosition comWidth">
 	<strong><a href="index.php">首页</a></strong>
 	<span>&nbsp;&gt;&nbsp;</span>
@@ -181,95 +133,98 @@ $(document).ready(function() {
 				</div>
 				<div class="dl clearfix">
 					<div class="dt">教室信息</div>
-					<div class="dd clearfix"><span class="hg"><i class="hg_icon"></i><em><?php echo $proInfo['pDesc'];?></em></span></div>
+					<div class="dd clearfix"><span class="hg"><em><?php echo $proInfo['pDesc'];?></em></span></div>
 				</div>
+				<div class="des_position">
+				<h3>预约教室</h3>
+              <form action="doorder.php" method="post" enctype="multipart/form-data">
+                <table width="70%"  border="1" cellpadding="5" cellspacing="0" bgcolor="#cccccc">
+                
+                	<tr>
+                		<td align="right">预约者</td>
+                		<td><input type="text"  name="username"  value="<?php echo $_SESSION['username'];?>"/></td>
+                	</tr>
+                	<tr>
+                		<td align="right">教室名称</td>
+                		<td><input type="text"  name="pName"  value="<?php echo $proInfo['pName'];?>"/></td>
+                	</tr>
+                	<tr>
+                		<td align="right">教室编号</td>
+                		<td><input type="text" disabled="true" name="pSn"  value="<?php echo $proInfo['pSn'];?>"/></td>
+                	</tr>
+                	<tr>
+                		<td align="right">教室容量</td>
+                		<td><input type="text" disabled="true" name="pNum"  value="<?php echo $proInfo['pNum'];?>"/></td>
+                	</tr>
+                	<tr>
+                		<td align="right">预约原因</td>
+                		<td>
+                			<textarea name="reason" id="editor_id" style="width:100%;height:150px;"></textarea>
+                		</td>
+                	</tr>
+                	<tr>
+                		<td align="right">选择日期-时间段</td>
+                		<td>
+                		<select name="date">
+                            <?php foreach($dateInfo as $row):?>
+                            <option value="<?php echo $row['id'];?>"><?php echo $row['date'];?> 
+                            <?php 
+                            switch ($row['w_time'])
+                            {
+                                case 1:
+                                    echo "第一节课";
+                                    break;
+                                case 2:
+                                    echo "第二节课";
+                                    break;
+                                case 3:
+                                    echo "第三节课";
+                                    break;
+                                case 4:
+                                    echo "第四节课";
+                                    break;
+                                case 5:
+                                    echo "第五节课";
+                                    break;
+                                case 6:
+                                    echo "第六节课";
+                                    break;
+                                    
+                                default:
+                                    echo "晚自习";
+   
+                            }
+                            ?></option>
+                             <?php endforeach;?>
+                         </select>
+                		</td>
+                	</tr>
+                
+                	<tr>
+                		<td colspan="2"><input type="submit"  value="提交预约"/></td>
+                	</tr>
+                </table>
+                </form>
+                </div>
 <!-- 				<div class="des_position"> -->
 <!-- 					<div class="dl clearfix"> -->
-<!-- 						<div class="dt">送到</div> -->
-<!-- 						<div class="dd clearfix"> -->
-<!-- 							<div class="select"> -->
-<!-- 								<h3>海淀区五环内</h3><span></span> -->
-<!-- 								<ul class="show_select"> -->
-<!-- 									<li>上帝</li> -->
-<!-- 									<li>五道口</li> -->
-<!-- 									<li>上帝</li> -->
-<!-- 								</ul> -->
-<!-- 							</div> -->
-<!-- 							<span class="theGoods">有货，可当日出货</span> -->
-<!-- 						</div> -->
+<!-- 						<div class="dt">选择日期-时间段</div> -->
+<!--                             		<select name="date"> -->
+<!--                             		</select> -->
+<!-- 							<span class="theGoods">（当前可预约日期）</span> -->
 <!-- 					</div> -->
-<!-- 					<div class="dl clearfix"> -->
-<!-- 						<div class="dt colorSelect">选择颜色</div> -->
-<!-- 						<div class="dd clearfix"> -->
-<!-- 							<div class="des_item des_item_acitve"> -->
-<!-- 								WIFI 16GB -->
-<!-- 							</div> -->
-<!-- 							<div class="des_item"> -->
-<!-- 								WIFI 16GB -->
-<!-- 							</div> -->
-<!-- 							<div class="des_item"> -->
-<!-- 								WIFI 16GB -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 					<div class="dl clearfix"> -->
-<!-- 						<div class="dt des_select_more">选择版本</div> -->
-<!-- 						<div class="dd clearfix "> -->
-<!-- 							<div class="des_item des_item_sm des_item_acitve"> -->
-<!-- 								WIFI 16GB -->
-<!-- 							</div> -->
-<!-- 							<div class="des_item des_item_sm"> -->
-<!-- 								WIFI 16GB + 3G -->
-<!-- 							</div> -->
-<!-- 							<div class="des_item des_item_sm"> -->
-<!-- 								WIFI + 3G -->
-<!-- 							</div> -->
-<!-- 							<div class="des_item des_item_sm"> -->
-<!-- 								WIFI 16GB -->
-<!-- 							</div> -->
-<!-- 							<div class="des_item des_item_sm"> -->
-<!-- 								WIFI 16GB + 3G -->
-<!-- 							</div> -->
-<!-- 							<div class="des_item des_item_sm"> -->
-<!-- 								WIFI + 3G -->
-<!-- 							</div> -->
-<!-- 							<div class="des_item des_item_sm"> -->
-<!-- 								WIFI 16GB -->
-<!-- 							</div> -->
-<!-- 							<div class="des_item des_item_sm"> -->
-<!-- 								WIFI 16GB + 3G -->
-<!-- 							</div> -->
-<!-- 							<div class="des_item des_item_sm"> -->
-<!-- 								WIFI + 3G -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 					<div class="dl"> -->
-<!-- 						<div class="dt des_num">数量</div> -->
-<!-- 						<div class="dd clearfix"> -->
-<!-- 							<div class="des_number"> -->
-<!-- 								<div class="reduction">-</div> -->
-<!-- 								<div class="des_input"> -->
-<!-- 									<input type="text"> -->
-<!-- 								</div> -->
-<!-- 								<div class="plus">+</div> -->
-<!-- 							</div> -->
-<!-- 							<span class="xg">限购<em>9</em>件</span> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
+<!-- 				<div class="des_select"> -->
+<!-- 					已选择时间段 <span>"上午第一节课"</span> -->
 <!-- 				</div> -->
-				<div class="des_select">
-					已选择时间段 <span>"上午第一节课"</span>
-				</div>
-				<div class="shop_buy">
-					<a href="#" class="shopping_btn">预约</a>
-<!-- 					<span class="line"></span> -->
-<!-- 					<a href="#" class="buy_btn"></a> -->
-				</div>
-				<div class="notes">
-					注意：预约后请签到！
-				</div>
-			</div>
+<!-- 				<div class="shop_buy"> -->
+<!-- 				<input type="button" value="提交预约" class="search_btn fr"> -->
+<!-- 				</div> -->
+				
+				
+<!-- 				<div class="notes"> -->
+<!-- 					注意：预约后请签到！ -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 		</div>
 	</div>
 </div>

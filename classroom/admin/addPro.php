@@ -66,14 +66,6 @@ if(!$rows){
 		<td align="right">教室容量</td>
 		<td><input type="text" name="pNum"  placeholder="请输入座位数"/></td>
 	</tr>
-<!-- 	<tr> -->
-<!-- 		<td align="right">是否可预约</td> -->
-<!-- 		<td><input type="text" name="mPrice"  placeholder="请输入商品市场价"/></td> -->
-<!-- 	</tr> -->
-<!-- 	<tr> -->
-<!-- 		<td align="right">商品慕课价</td> -->
-<!-- 		<td><input type="text" name="iPrice"  placeholder="请输入商品慕课价"/></td> -->
-<!-- 	</tr> -->
 	<tr>
 		<td align="right">教室描述</td>
 		<td>

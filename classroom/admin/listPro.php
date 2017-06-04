@@ -158,7 +158,7 @@ function showDetail(id,t){
 	      modal:false,//是否模式对话框
 	      draggable:true,//是否允许拖拽
 	      resizable:true,//是否允许拖动
-	      title:"商品名称："+t,//对话框标题
+	      title:"教室名称："+t,//对话框标题
 	      show:"slide",
 	      hide:"explode"
 	});

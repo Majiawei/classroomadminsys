@@ -40,6 +40,10 @@ if($act=="logout"){
     $mes=editNotice($id);
 }elseif ($act=="delNotice"){
     $mes=delNotice($id);
+}elseif ($act =="addperorder"){
+    $mes = addperorder();
+}elseif ($act =="delperorder"){
+    $mes = delperorder($id);
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

@@ -25,6 +25,16 @@ function getProImgsById($id){
 	$rows=fetchAll($sql);
 	return $rows;
 }
+function getDateById($id){
+    $sql="select id,date,w_time from perorder where pid={$id} ";
+    $rows=fetchAll($sql);
+    return $rows;
+}
+function getDateTimeById($id){
+    $sql="select date,w_time from perorder where id={$id} ";
+    $rows=fetchAll($sql);
+    return $rows;
+}
 /**
  * 文字水印的效果
  * @param int $id
